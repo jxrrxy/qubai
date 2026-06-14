@@ -6,6 +6,7 @@ import { Section, SectionHeader } from "@/components/ui/section";
 import { GlassCard } from "@/components/ui/glass-card";
 import { QuoteIcon, StarIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "@/lib/i18n/i18n-context";
 
 const testimonials = [
   {
@@ -38,21 +39,22 @@ const testimonials = [
 ];
 
 export function Testimonials() {
+  const t = useTranslations();
   const [active, setActive] = useState(0);
 
   return (
     <Section>
       <SectionHeader
-        badge="Testimonials"
+        badge={t("testimonials.badge")}
         title={
           <span>
-            Trusted by{" "}
+            {t("testimonials.title.prefix")}{" "}
             <span className="bg-gradient-to-r from-qubai-400 to-cyan-400 bg-clip-text text-transparent">
-              industry leaders
+              {t("testimonials.title.highlight")}
             </span>
           </span>
         }
-        description="Hear from the brands and teams we've had the privilege of working with."
+        description={t("testimonials.description")}
       />
 
       <div className="mx-auto max-w-4xl">
@@ -111,7 +113,7 @@ export function Testimonials() {
                   ? "w-8 bg-qubai-500"
                   : "w-2 bg-white/20 hover:bg-white/40"
               )}
-              aria-label={`Go to testimonial ${i + 1}`}
+              aria-label={`${t("testimonials.badge")} ${i + 1}`}
             />
           ))}
         </div>

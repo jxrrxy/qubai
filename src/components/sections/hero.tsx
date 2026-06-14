@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { AnimatedBackground } from "@/components/ui/animated-background";
 import { ArrowRightIcon, PlayIcon } from "@/components/ui/icons";
+import { useTranslations } from "@/lib/i18n/i18n-context";
 
 export function Hero() {
+  const t = useTranslations();
+
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-20 md:pt-24">
       {/* Background canvas */}
@@ -29,7 +32,7 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
-        
+
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -37,12 +40,12 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
         >
-          We craft{" "}
+          {t("hero.title.prefix")}{" "}
           <span className="bg-gradient-to-r from-qubai-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">
-            digital excellence
+            {t("hero.title.highlight")}
           </span>
           <br />
-          for modern brands
+          {t("hero.title.suffix")}
         </motion.h1>
 
         {/* Description */}
@@ -52,9 +55,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400 md:text-xl"
         >
-          Qubai is a design and development studio specializing in creating
-          stunning websites, powerful web applications, and unforgettable digital
-          experiences that drive growth.
+          {t("hero.description")}
         </motion.p>
 
         {/* CTAs */}
@@ -65,12 +66,12 @@ export function Hero() {
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Button variant="primary" size="lg" href="#contact">
-            Start Your Project
+            {t("hero.cta.primary")}
             <ArrowRightIcon />
           </Button>
           <Button variant="secondary" size="lg" href="#projects">
             <PlayIcon />
-            View Our Work
+            {t("hero.cta.secondary")}
           </Button>
         </motion.div>
 
@@ -82,17 +83,17 @@ export function Hero() {
           className="mt-20 flex flex-wrap items-center justify-center gap-8 md:gap-16"
         >
           {[
-            { value: "50+", label: "Projects Delivered" },
-            { value: "30+", label: "Happy Clients" },
-            { value: "6+", label: "Years Experience" },
-            { value: "99%", label: "Client Satisfaction" },
+            { value: "50+", labelKey: "hero.stat.projects" as const },
+            { value: "30+", labelKey: "hero.stat.clients" as const },
+            { value: "6+", labelKey: "hero.stat.experience" as const },
+            { value: "99%", labelKey: "hero.stat.satisfaction" as const },
           ].map((stat) => (
-            <div key={stat.label} className="text-center">
+            <div key={stat.labelKey} className="text-center">
               <div className="text-2xl font-bold text-white md:text-3xl">
                 {stat.value}
               </div>
               <div className="mt-1 text-xs text-zinc-600 md:text-sm">
-                {stat.label}
+                {t(stat.labelKey)}
               </div>
             </div>
           ))}
@@ -111,7 +112,7 @@ export function Hero() {
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-xs text-zinc-600">Scroll</span>
+          <span className="text-xs text-zinc-600">{t("hero.scroll")}</span>
           <div className="h-8 w-[1px] bg-gradient-to-b from-zinc-600 to-transparent" />
         </motion.div>
       </motion.div>

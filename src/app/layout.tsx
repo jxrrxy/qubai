@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { I18nProvider } from "@/lib/i18n/i18n-context";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -55,7 +57,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="min-h-screen bg-black text-white antialiased">
-        {children}
+        <I18nProvider>
+          {children}
+          <WhatsAppButton />
+        </I18nProvider>
       </body>
     </html>
   );

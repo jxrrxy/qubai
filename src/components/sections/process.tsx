@@ -5,57 +5,54 @@ import { Section, SectionHeader } from "@/components/ui/section";
 import { GlassCard } from "@/components/ui/glass-card";
 import { cn } from "@/lib/utils";
 import { useInView } from "@/lib/use-in-view";
+import { useTranslations } from "@/lib/i18n/i18n-context";
 
-const steps = [
+const stepKeys = [
   {
     number: "01",
-    title: "Discovery",
-    description:
-      "We dive deep into your brand, goals, and audience. Through collaborative workshops and research, we uncover insights that shape the project direction.",
-    details: [
-      "Brand & audience analysis",
-      "Competitive research",
-      "Goal definition",
-      "Technical audit",
+    titleKey: "process.discovery.title" as const,
+    descKey: "process.discovery.description" as const,
+    detailsKeys: [
+      "process.discovery.detail-1" as const,
+      "process.discovery.detail-2" as const,
+      "process.discovery.detail-3" as const,
+      "process.discovery.detail-4" as const,
     ],
     gradient: "from-qubai-500 to-purple-600",
   },
   {
     number: "02",
-    title: "Design",
-    description:
-      "We craft pixel-perfect designs that balance beauty with usability. Iterative prototyping ensures every interaction feels intentional.",
-    details: [
-      "Wireframing & prototyping",
-      "Visual design system",
-      "Interaction design",
-      "User testing",
+    titleKey: "process.design.title" as const,
+    descKey: "process.design.description" as const,
+    detailsKeys: [
+      "process.design.detail-1" as const,
+      "process.design.detail-2" as const,
+      "process.design.detail-3" as const,
+      "process.design.detail-4" as const,
     ],
     gradient: "from-purple-500 to-pink-600",
   },
   {
     number: "03",
-    title: "Build",
-    description:
-      "Our engineers bring designs to life with clean, performant code. We follow best practices for accessibility, SEO, and scalability.",
-    details: [
-      "Agile development",
-      "Quality assurance",
-      "Performance optimization",
-      "Accessibility compliance",
+    titleKey: "process.build.title" as const,
+    descKey: "process.build.description" as const,
+    detailsKeys: [
+      "process.build.detail-1" as const,
+      "process.build.detail-2" as const,
+      "process.build.detail-3" as const,
+      "process.build.detail-4" as const,
     ],
     gradient: "from-pink-500 to-orange-600",
   },
   {
     number: "04",
-    title: "Launch & Grow",
-    description:
-      "We deploy, monitor, and optimize. Our partnership doesn't end at launch — we help you measure success and plan the next phase.",
-    details: [
-      "Deployment & CI/CD",
-      "Analytics setup",
-      "Performance monitoring",
-      "Ongoing optimization",
+    titleKey: "process.launch.title" as const,
+    descKey: "process.launch.description" as const,
+    detailsKeys: [
+      "process.launch.detail-1" as const,
+      "process.launch.detail-2" as const,
+      "process.launch.detail-3" as const,
+      "process.launch.detail-4" as const,
     ],
     gradient: "from-orange-500 to-cyan-600",
   },
@@ -66,10 +63,11 @@ function ProcessStep({
   index,
   isLast,
 }: {
-  step: (typeof steps)[0];
+  step: (typeof stepKeys)[0];
   index: number;
   isLast: boolean;
 }) {
+  const t = useTranslations();
   const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.3 });
 
   return (
@@ -104,24 +102,24 @@ function ProcessStep({
           <div className="grid gap-6 md:grid-cols-2">
             <div>
               <h3 className="text-xl font-semibold text-white md:text-2xl">
-                {step.title}
+                {t(step.titleKey)}
               </h3>
               <p className="mt-3 leading-relaxed text-zinc-400">
-                {step.description}
+                {t(step.descKey)}
               </p>
             </div>
             <div>
               <h4 className="mb-3 text-sm font-medium uppercase tracking-wider text-zinc-500">
-                Key Activities
+                {t("process.key-activities")}
               </h4>
               <ul className="space-y-2">
-                {step.details.map((detail) => (
+                {step.detailsKeys.map((detailKey) => (
                   <li
-                    key={detail}
+                    key={detailKey}
                     className="flex items-center gap-2 text-sm text-zinc-400"
                   >
                     <span className="h-1 w-1 rounded-full bg-qubai-500" />
-                    {detail}
+                    {t(detailKey)}
                   </li>
                 ))}
               </ul>
@@ -134,29 +132,31 @@ function ProcessStep({
 }
 
 export function Process() {
+  const t = useTranslations();
+
   return (
     <Section id="process">
       <SectionHeader
-        badge="How We Work"
+        badge={t("process.badge")}
         title={
           <span>
-            A proven{" "}
+            {t("process.title.prefix")}{" "}
             <span className="bg-gradient-to-r from-qubai-400 to-cyan-400 bg-clip-text text-transparent">
-              process
+              {t("process.title.highlight")}
             </span>{" "}
-            that delivers
+            {t("process.title.suffix")}
           </span>
         }
-        description="Our streamlined workflow ensures transparency, collaboration, and exceptional results at every stage."
+        description={t("process.description")}
       />
 
       <div className="mx-auto max-w-3xl">
-        {steps.map((step, index) => (
+        {stepKeys.map((step, index) => (
           <ProcessStep
             key={step.number}
             step={step}
             index={index}
-            isLast={index === steps.length - 1}
+            isLast={index === stepKeys.length - 1}
           />
         ))}
       </div>

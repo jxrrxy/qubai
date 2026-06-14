@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ExternalIcon, ArrowRightIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import { useInView } from "@/lib/use-in-view";
+import { useTranslations } from "@/lib/i18n/i18n-context";
 
 const projects = [
   {
@@ -52,6 +53,7 @@ function ProjectCard({
   project: (typeof projects)[0];
   index: number;
 }) {
+  const t = useTranslations();
   const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.15 });
 
   return (
@@ -129,7 +131,7 @@ function ProjectCard({
           {/* Content */}
           <div className="flex flex-col justify-center p-8 md:p-12">
             <Badge variant="default" className="mb-4">
-              Featured Project
+              {t("projects.featured")}
             </Badge>
             <h3 className="text-2xl font-semibold text-white md:text-3xl">
               {project.title}
@@ -147,7 +149,7 @@ function ProjectCard({
                 <div key={metric}>
                   <div className="flex items-center gap-1">
                     <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                    <span className="text-xs text-zinc-500">Impact</span>
+                    <span className="text-xs text-zinc-500">{t("projects.impact")}</span>
                   </div>
                   <p className="mt-1 text-xs text-zinc-400">{metric}</p>
                 </div>
@@ -168,7 +170,7 @@ function ProjectCard({
 
             <div className="mt-6">
               <Button variant="ghost" size="sm" className="group">
-                View Case Study
+                {t("projects.case-study")}
                 <ArrowRightIcon />
               </Button>
             </div>
@@ -180,19 +182,21 @@ function ProjectCard({
 }
 
 export function Projects() {
+  const t = useTranslations();
+
   return (
     <Section id="projects">
       <SectionHeader
-        badge="Our Work"
+        badge={t("projects.badge")}
         title={
           <span>
-            Featured{" "}
+            {t("projects.title.prefix")}{" "}
             <span className="bg-gradient-to-r from-qubai-400 to-cyan-400 bg-clip-text text-transparent">
-              projects
+              {t("projects.title.highlight")}
             </span>
           </span>
         }
-        description="Each project is a testament to our commitment to quality, innovation, and attention to detail."
+        description={t("projects.description")}
       />
 
       <div className="space-y-8">
@@ -208,7 +212,7 @@ export function Projects() {
         className="mt-12 text-center"
       >
         <Button variant="outline" size="lg">
-          View All Projects
+          {t("projects.view-all")}
           <ExternalIcon />
         </Button>
       </motion.div>

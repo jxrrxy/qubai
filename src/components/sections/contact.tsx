@@ -12,8 +12,10 @@ import {
   SendIcon,
   ArrowRightIcon,
 } from "@/components/ui/icons";
+import { useTranslations } from "@/lib/i18n/i18n-context";
 
 function ContactForm() {
+  const t = useTranslations();
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -37,7 +39,7 @@ function ContactForm() {
             htmlFor="name"
             className="mb-2 block text-sm font-medium text-zinc-400"
           >
-            Name
+            {t("contact.form.name")}
           </label>
           <input
             id="name"
@@ -48,7 +50,7 @@ function ContactForm() {
               setFormState({ ...formState, name: e.target.value })
             }
             className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-zinc-600 transition-colors focus:border-qubai-500/50 focus:outline-none focus:ring-1 focus:ring-qubai-500/30"
-            placeholder="Your name"
+            placeholder={t("contact.form.name-placeholder")}
           />
         </div>
         <div>
@@ -56,7 +58,7 @@ function ContactForm() {
             htmlFor="email"
             className="mb-2 block text-sm font-medium text-zinc-400"
           >
-            Email
+            {t("contact.form.email")}
           </label>
           <input
             id="email"
@@ -67,7 +69,7 @@ function ContactForm() {
               setFormState({ ...formState, email: e.target.value })
             }
             className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-zinc-600 transition-colors focus:border-qubai-500/50 focus:outline-none focus:ring-1 focus:ring-qubai-500/30"
-            placeholder="you@company.com"
+            placeholder={t("contact.form.email-placeholder")}
           />
         </div>
       </div>
@@ -76,7 +78,7 @@ function ContactForm() {
           htmlFor="company"
           className="mb-2 block text-sm font-medium text-zinc-400"
         >
-          Company
+          {t("contact.form.company")}
         </label>
         <input
           id="company"
@@ -86,7 +88,7 @@ function ContactForm() {
             setFormState({ ...formState, company: e.target.value })
           }
           className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-zinc-600 transition-colors focus:border-qubai-500/50 focus:outline-none focus:ring-1 focus:ring-qubai-500/30"
-          placeholder="Your company (optional)"
+          placeholder={t("contact.form.company-placeholder")}
         />
       </div>
       <div>
@@ -94,7 +96,7 @@ function ContactForm() {
           htmlFor="message"
           className="mb-2 block text-sm font-medium text-zinc-400"
         >
-          Message
+          {t("contact.form.message")}
         </label>
         <textarea
           id="message"
@@ -105,11 +107,11 @@ function ContactForm() {
             setFormState({ ...formState, message: e.target.value })
           }
           className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-zinc-600 transition-colors focus:border-qubai-500/50 focus:outline-none focus:ring-1 focus:ring-qubai-500/30"
-          placeholder="Tell us about your project..."
+          placeholder={t("contact.form.message-placeholder")}
         />
       </div>
       <Button type="submit" variant="primary" size="lg" className="w-full">
-        {submitted ? "Message Sent! ✓" : "Send Message"}
+        {submitted ? t("contact.form.sent") : t("contact.form.send")}
         <SendIcon />
       </Button>
     </form>
@@ -117,6 +119,7 @@ function ContactForm() {
 }
 
 export function Contact() {
+  const t = useTranslations();
   const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.2 });
 
   return (
@@ -137,18 +140,17 @@ export function Contact() {
         <div className="mb-16 overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-br from-qubai-600/20 via-purple-600/10 to-cyan-600/10 p-8 md:p-16">
           <div className="relative z-10 text-center">
             <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl lg:text-5xl">
-              Let&apos;s build something{" "}
+              {t("contact.cta.title.prefix")}{" "}
               <span className="bg-gradient-to-r from-qubai-400 to-cyan-400 bg-clip-text text-transparent">
-                extraordinary
+                {t("contact.cta.title.highlight")}
               </span>
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-zinc-400">
-              Ready to take your digital presence to the next level? Tell us
-              about your project and we&apos;ll get back to you within 24 hours.
+              {t("contact.cta.description")}
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button variant="primary" size="lg" href="#contact-form">
-                Start Your Project
+                {t("contact.cta.button")}
                 <ArrowRightIcon />
               </Button>
               <Button variant="secondary" size="lg" href="mailto:hello@qubai.design">
@@ -163,7 +165,7 @@ export function Contact() {
         <div id="contact-form" className="grid gap-8 md:grid-cols-5">
           <GlassCard className="p-8 md:col-span-3" hover={false}>
             <h3 className="mb-6 text-xl font-semibold text-white">
-              Send us a message
+              {t("contact.form.title")}
             </h3>
             <ContactForm />
           </GlassCard>
@@ -175,7 +177,7 @@ export function Contact() {
                   <MailIcon />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-white">Email</h4>
+                  <h4 className="text-sm font-medium text-white">{t("contact.info.email")}</h4>
                   <p className="mt-1 text-sm text-zinc-500">
                     hello@qubai.design
                   </p>
@@ -189,7 +191,7 @@ export function Contact() {
                   <MapPinIcon />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-white">Location</h4>
+                  <h4 className="text-sm font-medium text-white">{t("contact.info.location")}</h4>
                   <p className="mt-1 text-sm text-zinc-500">
                     San Francisco, CA
                   </p>
@@ -199,7 +201,7 @@ export function Contact() {
 
             <GlassCard className="p-6" hover={false}>
               <h4 className="text-sm font-medium text-white">
-                Follow us
+                {t("contact.info.follow")}
               </h4>
               <div className="mt-4 flex gap-3">
                 {["Twitter", "GitHub", "Dribbble", "LinkedIn"].map(
@@ -219,10 +221,10 @@ export function Contact() {
             <GlassCard className="overflow-hidden p-0" hover={false}>
               <div className="bg-gradient-to-r from-qubai-600 to-cyan-600 p-6 text-center">
                 <p className="text-sm font-medium text-white">
-                  Available for new projects
+                  {t("contact.info.available")}
                 </p>
                 <p className="mt-1 text-xs text-white/70">
-                  Typically respond within 24 hours
+                  {t("contact.info.response")}
                 </p>
               </div>
             </GlassCard>

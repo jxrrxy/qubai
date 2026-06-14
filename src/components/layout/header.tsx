@@ -6,16 +6,18 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { MenuIcon, CloseIcon } from "@/components/ui/icons";
+import { useI18n } from "@/lib/i18n/i18n-context";
 
-const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Process", href: "#process" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+const navLinkKeys = [
+  { key: "header.nav.services" as const, href: "#services" },
+  { key: "header.nav.projects" as const, href: "#projects" },
+  { key: "header.nav.process" as const, href: "#process" },
+  { key: "header.nav.about" as const, href: "#about" },
+  { key: "header.nav.contact" as const, href: "#contact" },
 ];
 
 export function Header() {
+  const { t, locale, setLocale } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -35,6 +37,10 @@ export function Header() {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
+
+  const toggleLocale = () => {
+    setLocale(locale === "en" ? "ru" : "en");
+  };
 
   return (
     <header
@@ -82,7 +88,7 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-2 md:flex">
-          {navLinks.map((link) => (
+          {navLinkKeys.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -93,16 +99,44 @@ export function Header() {
                   : "rounded-lg px-4 py-2.5 text-base text-zinc-400"
               )}
             >
-              {link.label}
+              {t(link.key)}
             </a>
           ))}
         </nav>
 
-        {/* Desktop CTA */}
+        {/* Desktop right: lang toggle + CTA */}
         <div className="hidden items-center gap-4 md:flex">
+          {/* Language toggle */}
+          <button
+            onClick={toggleLocale}
+            className={cn(
+              "flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-medium transition-all",
+              "text-zinc-400 border-white/10 hover:text-white hover:border-white/20"
+            )}
+            aria-label="Toggle language"
+          >
+            <span
+              className={cn(
+                "transition-opacity",
+                locale === "en" ? "text-white" : "text-zinc-600"
+              )}
+            >
+              EN
+            </span>
+            <span className="text-zinc-600">/</span>
+            <span
+              className={cn(
+                "transition-opacity",
+                locale === "ru" ? "text-white" : "text-zinc-600"
+              )}
+            >
+              RU
+            </span>
+          </button>
+
           <motion.div layout transition={{ duration: 0.4 }}>
             <Button variant="primary" size="md" href="#contact">
-              Get in Touch
+              {t("header.cta")}
             </Button>
           </motion.div>
         </div>
@@ -128,7 +162,7 @@ export function Header() {
             className="fixed inset-0 z-0 bg-black/95 backdrop-blur-2xl md:hidden"
           >
             <nav className="flex flex-col items-center justify-center gap-6 h-full">
-              {navLinks.map((link, i) => (
+              {navLinkKeys.map((link, i) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
@@ -138,17 +172,55 @@ export function Header() {
                   transition={{ delay: i * 0.08 }}
                   className="text-2xl font-medium text-zinc-400 transition-colors hover:text-white"
                 >
-                  {link.label}
+                  {t(link.key)}
                 </motion.a>
               ))}
+
+              {/* Mobile language toggle */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 }}
+                className="flex items-center gap-3"
+              >
+                <button
+                  onClick={() => {
+                    setLocale("en");
+                    setMobileOpen(false);
+                  }}
+                  className={cn(
+                    "rounded-full border px-4 py-2 text-sm font-medium transition-all",
+                    locale === "en"
+                      ? "bg-white/10 text-white border-white/20"
+                      : "text-zinc-500 border-white/10 hover:text-white hover:border-white/20"
+                  )}
+                >
+                  EN
+                </button>
+                <button
+                  onClick={() => {
+                    setLocale("ru");
+                    setMobileOpen(false);
+                  }}
+                  className={cn(
+                    "rounded-full border px-4 py-2 text-sm font-medium transition-all",
+                    locale === "ru"
+                      ? "bg-white/10 text-white border-white/20"
+                      : "text-zinc-500 border-white/10 hover:text-white hover:border-white/20"
+                  )}
+                >
+                  RU
+                </button>
+              </motion.div>
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="mt-8"
+                className="mt-4"
               >
                 <Button variant="primary" size="lg" href="#contact">
-                  Get in Touch
+                  {t("header.cta")}
                 </Button>
               </motion.div>
             </nav>

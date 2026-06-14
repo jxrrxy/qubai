@@ -8,31 +8,32 @@ import { Button } from "@/components/ui/button";
 import { ArrowRightIcon, CheckIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import { useInView } from "@/lib/use-in-view";
+import { useTranslations } from "@/lib/i18n/i18n-context";
 
-const values = [
+const valueKeys = [
   {
-    title: "Craft over speed",
-    description: "We believe in taking the time to get it right.",
+    titleKey: "about.value-1.title" as const,
+    descKey: "about.value-1.description" as const,
   },
   {
-    title: "User-first mindset",
-    description: "Every decision starts with the end-user experience.",
+    titleKey: "about.value-2.title" as const,
+    descKey: "about.value-2.description" as const,
   },
   {
-    title: "Radical transparency",
-    description: "Open communication, clear expectations, no surprises.",
+    titleKey: "about.value-3.title" as const,
+    descKey: "about.value-3.description" as const,
   },
   {
-    title: "Continuous learning",
-    description: "The digital landscape evolves; so do we.",
+    titleKey: "about.value-4.title" as const,
+    descKey: "about.value-4.description" as const,
   },
 ];
 
 const team = [
-  { initials: "AK", name: "Akira Kuroda", role: "Creative Director", color: "from-qubai-500 to-purple-600" },
-  { initials: "SM", name: "Sasha Moreno", role: "Lead Developer", color: "from-purple-500 to-pink-600" },
-  { initials: "JL", name: "Jamie Liu", role: "UX Designer", color: "from-pink-500 to-orange-600" },
-  { initials: "RT", name: "Ryan Torres", role: "Full-Stack Engineer", color: "from-orange-500 to-cyan-600" },
+  { initials: "AK", name: "Akira Kuroda", roleKey: "about.team.role-1" as const, color: "from-qubai-500 to-purple-600" },
+  { initials: "SM", name: "Sasha Moreno", roleKey: "about.team.role-2" as const, color: "from-purple-500 to-pink-600" },
+  { initials: "JL", name: "Jamie Liu", roleKey: "about.team.role-3" as const, color: "from-pink-500 to-orange-600" },
+  { initials: "RT", name: "Ryan Torres", roleKey: "about.team.role-4" as const, color: "from-orange-500 to-cyan-600" },
 ];
 
 function AnimatedNumber({
@@ -63,35 +64,32 @@ function AnimatedNumber({
 }
 
 export function About() {
+  const t = useTranslations();
+
   return (
     <Section id="about">
       {/* About intro */}
       <div className="grid gap-12 md:grid-cols-2">
         <div>
           <Badge variant="gradient" className="mb-4">
-            About Us
+            {t("about.badge")}
           </Badge>
           <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl lg:text-5xl">
-            We are a{" "}
+            {t("about.title.prefix")}{" "}
             <span className="bg-gradient-to-r from-qubai-400 to-cyan-400 bg-clip-text text-transparent">
-              digital craft studio
+              {t("about.title.highlight")}
             </span>
           </h2>
         </div>
         <div className="space-y-4">
           <p className="text-lg leading-relaxed text-zinc-400">
-            Founded in 2019, Qubai brings together designers and engineers who
-            are passionate about creating exceptional digital experiences. We
-            partner with brands — from startups to enterprises — to build
-            products that users love.
+            {t("about.description-1")}
           </p>
           <p className="leading-relaxed text-zinc-500">
-            Our team of 12 combines deep expertise in design, engineering, and
-            strategy. We don&apos;t just build websites — we build digital
-            ecosystems that drive real business results.
+            {t("about.description-2")}
           </p>
           <Button variant="ghost" size="sm" className="group" href="#contact">
-            Start a conversation
+            {t("about.cta")}
             <ArrowRightIcon />
           </Button>
         </div>
@@ -100,16 +98,16 @@ export function About() {
       {/* Stats grid */}
       <div className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.06] md:grid-cols-4">
         {[
-          { end: 50, suffix: "+", label: "Projects" },
-          { end: 30, suffix: "+", label: "Clients" },
-          { end: 6, suffix: "+", label: "Years" },
-          { end: 12, label: "Team Members" },
+          { end: 50, suffix: "+", labelKey: "about.stat.projects" as const },
+          { end: 30, suffix: "+", labelKey: "about.stat.clients" as const },
+          { end: 6, suffix: "+", labelKey: "about.stat.years" as const },
+          { end: 12, labelKey: "about.stat.team" as const },
         ].map((stat) => (
           <div
-            key={stat.label}
+            key={stat.labelKey}
             className="bg-background p-6 md:p-8"
           >
-            <AnimatedNumber end={stat.end} suffix={stat.suffix!} label={stat.label} />
+            <AnimatedNumber end={stat.end} suffix={stat.suffix ?? ""} label={t(stat.labelKey)} />
           </div>
         ))}
       </div>
@@ -117,12 +115,12 @@ export function About() {
       {/* Values */}
       <div className="mt-16">
         <h3 className="mb-8 text-center text-lg font-medium text-white">
-          What we believe in
+          {t("about.values-title")}
         </h3>
         <div className="grid gap-4 md:grid-cols-4">
-          {values.map((value, i) => (
+          {valueKeys.map((value, i) => (
             <motion.div
-              key={value.title}
+              key={value.titleKey}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -133,10 +131,10 @@ export function About() {
                   <CheckIcon className="text-qubai-400" />
                 </div>
                 <h4 className="text-sm font-medium text-white">
-                  {value.title}
+                  {t(value.titleKey)}
                 </h4>
                 <p className="mt-1 text-xs leading-relaxed text-zinc-500">
-                  {value.description}
+                  {t(value.descKey)}
                 </p>
               </GlassCard>
             </motion.div>
@@ -147,7 +145,7 @@ export function About() {
       {/* Team */}
       <div className="mt-16">
         <h3 className="mb-8 text-center text-lg font-medium text-white">
-          Meet the team
+          {t("about.team-title")}
         </h3>
         <div className="grid gap-4 md:grid-cols-4">
           {team.map((member, i) => (
@@ -170,7 +168,7 @@ export function About() {
                 <h4 className="text-sm font-medium text-white">
                   {member.name}
                 </h4>
-                <p className="mt-0.5 text-xs text-zinc-500">{member.role}</p>
+                <p className="mt-0.5 text-xs text-zinc-500">{t(member.roleKey)}</p>
               </GlassCard>
             </motion.div>
           ))}

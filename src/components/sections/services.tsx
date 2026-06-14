@@ -12,57 +12,52 @@ import {
   MobileIcon,
   AnalyticsIcon,
 } from "@/components/ui/icons";
+import { useTranslations } from "@/lib/i18n/i18n-context";
 
-const services = [
+const serviceKeys = [
   {
-    title: "Web Development",
-    description:
-      "High-performance websites and web applications built with cutting-edge technologies. React, Next.js, and Node.js at the core.",
+    titleKey: "services.web-dev.title" as const,
+    descKey: "services.web-dev.description" as const,
     icon: CodeIcon,
     gradient: "from-qubai-500/20 via-qubai-500/5 to-transparent",
     accent: "text-qubai-400",
     size: "large",
   },
   {
-    title: "UI/UX Design",
-    description:
-      "Beautiful, intuitive interfaces designed with precision. Every pixel crafted to delight users and achieve business goals.",
+    titleKey: "services.uiux.title" as const,
+    descKey: "services.uiux.description" as const,
     icon: DesignIcon,
     gradient: "from-purple-500/20 via-purple-500/5 to-transparent",
     accent: "text-purple-400",
     size: "small",
   },
   {
-    title: "Digital Strategy",
-    description:
-      "Data-driven strategies that align design and technology with your business objectives for measurable results.",
+    titleKey: "services.strategy.title" as const,
+    descKey: "services.strategy.description" as const,
     icon: StrategyIcon,
     gradient: "from-amber-500/20 via-amber-500/5 to-transparent",
     accent: "text-amber-400",
     size: "small",
   },
   {
-    title: "Performance Optimization",
-    description:
-      "Lightning-fast load times and silky-smooth interactions. We obsess over Core Web Vitals and performance budgets.",
+    titleKey: "services.perf.title" as const,
+    descKey: "services.perf.description" as const,
     icon: PerformanceIcon,
     gradient: "from-green-500/20 via-green-500/5 to-transparent",
     accent: "text-green-400",
     size: "medium",
   },
   {
-    title: "Mobile Development",
-    description:
-      "Responsive, native-feeling mobile experiences that work flawlessly across every device and screen size.",
+    titleKey: "services.mobile.title" as const,
+    descKey: "services.mobile.description" as const,
     icon: MobileIcon,
     gradient: "from-cyan-500/20 via-cyan-500/5 to-transparent",
     accent: "text-cyan-400",
     size: "medium",
   },
   {
-    title: "Analytics & Insights",
-    description:
-      "Comprehensive analytics setup and custom dashboards to track what matters and make informed decisions.",
+    titleKey: "services.analytics.title" as const,
+    descKey: "services.analytics.description" as const,
     icon: AnalyticsIcon,
     gradient: "from-pink-500/20 via-pink-500/5 to-transparent",
     accent: "text-pink-400",
@@ -86,19 +81,21 @@ const item = {
 };
 
 export function Services() {
+  const t = useTranslations();
+
   return (
     <Section id="services">
       <SectionHeader
-        badge="What We Do"
+        badge={t("services.badge")}
         title={
           <span>
-            Everything you need to{" "}
+            {t("services.title.prefix")}{" "}
             <span className="bg-gradient-to-r from-qubai-400 to-cyan-400 bg-clip-text text-transparent">
-              succeed online
+              {t("services.title.highlight")}
             </span>
           </span>
         }
-        description="From concept to launch, we provide end-to-end design and development services that help brands stand out in the digital landscape."
+        description={t("services.description")}
       />
 
       <motion.div
@@ -108,9 +105,9 @@ export function Services() {
         viewport={{ once: true, margin: "-100px" }}
         className="grid gap-4 md:grid-cols-3"
       >
-        {services.map((service) => (
+        {serviceKeys.map((service) => (
           <motion.div
-            key={service.title}
+            key={service.titleKey}
             variants={item}
             className={cn(
               "group",
@@ -138,10 +135,10 @@ export function Services() {
                   <service.icon />
                 </div>
                 <h3 className="mb-3 text-lg font-semibold text-white">
-                  {service.title}
+                  {t(service.titleKey)}
                 </h3>
                 <p className="text-sm leading-relaxed text-zinc-400">
-                  {service.description}
+                  {t(service.descKey)}
                 </p>
               </div>
             </GlassCard>
