@@ -193,7 +193,7 @@ export function Contact() {
                 <div>
                   <h4 className="text-sm font-medium text-white">{t("contact.info.location")}</h4>
                   <p className="mt-1 text-sm text-zinc-500">
-                    San Francisco, CA
+                    Almaty, Kazakhstan
                   </p>
                 </div>
               </div>

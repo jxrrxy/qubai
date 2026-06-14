@@ -173,7 +173,7 @@ export const en = {
 
   /* ===== Footer ===== */
   "footer.description":
-    "We craft modern digital experiences that blend stunning design with powerful engineering. Based in San Francisco, serving clients worldwide.",
+    "We craft modern digital experiences that blend stunning design with powerful engineering. Based in Almaty, Kazakhstan, serving clients worldwide.",
   "footer.services": "Services",
   "footer.company": "Company",
   "footer.link.web-design": "Web Design",
