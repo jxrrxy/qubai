@@ -41,13 +41,13 @@ export function Contact() {
               {t("contact.cta.description")}
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button variant="primary" size="lg" href="mailto:hello@qubai.design">
+              <Button variant="primary" size="lg" href="mailto:qubai.dev@outlook.com">
                 {t("contact.cta.button")}
                 <ArrowRightIcon />
               </Button>
-              <Button variant="secondary" size="lg" href="mailto:hello@qubai.design">
+              <Button variant="secondary" size="lg" href="mailto:qubai.dev@outlook.com">
                 <MailIcon />
-                hello@qubai.design
+                qubai.dev@outlook.com
               </Button>
             </div>
           </div>
