@@ -134,10 +134,10 @@ export const en = {
   "about.value-4.description": "The digital landscape evolves; so do we.",
 
   "about.team-title": "Meet the team",
-  "about.team.role-1": "Creative Director",
-  "about.team.role-2": "Lead Developer",
-  "about.team.role-3": "UX Designer",
-  "about.team.role-4": "Full-Stack Engineer",
+  "about.team.role-1": "Product Manager",
+  "about.team.role-2": "Frontend Engineer",
+  "about.team.role-3": "Backend Engineer",
+  "about.team.role-4": "UX Designer",
 
   /* ===== Testimonials ===== */
   "testimonials.badge": "Testimonials",
@@ -145,6 +145,18 @@ export const en = {
   "testimonials.title.highlight": "industry leaders",
   "testimonials.description":
     "Hear from the brands and teams we've had the privilege of working with.",
+  "testimonials.1.quote":
+    "Excellent work! Ordered a website for my delivery service. Everything was done precisely, the mobile responsiveness is perfect, and the admin panel is very simple and intuitive—I figured it out in half an hour. A special plus for the loading speed, which was critical for our clients. Highly recommend as a reliable specialist!",
+  "testimonials.1.author": "Arman Akhmetov",
+  "testimonials.1.role": "Entrepreneur, Astana",
+  "testimonials.2.quote":
+    "I'm glad I entrusted the development to this specialist. We needed to launch a modern aggregator website for children's educational centers. The project turned out lightweight, stylish, with convenient filters and—most importantly for Kazakhstan—smooth switching between Kazakh and Russian languages. Thanks for a cool result!",
+  "testimonials.2.author": "Shynar Askarova",
+  "testimonials.2.role": "Founder of Social Project",
+  "testimonials.3.quote":
+    "Extremely satisfied with the cooperation. The developer deeply understands modern tech, prioritizing web app speed and clean code. We launched a client dashboard in just a couple of weeks. Everything runs super fast, and the integration with local payment gateways (including Kaspi) works flawlessly. We will definitely keep working together.",
+  "testimonials.3.author": "Daniyar Nurtazin",
+  "testimonials.3.role": "Co-founder IT Startup, Almaty",
 
   /* ===== Contact ===== */
   "contact.cta.title.prefix": "Let's build something",
@@ -321,10 +333,10 @@ export const ru: Record<TranslationKey, string> = {
   "about.value-4.description": "Цифровой ландшафт меняется — меняемся и мы.",
 
   "about.team-title": "Наша команда",
-  "about.team.role-1": "Креативный директор",
-  "about.team.role-2": "Ведущий разработчик",
-  "about.team.role-3": "UX-дизайнер",
-  "about.team.role-4": "Full-Stack инженер",
+  "about.team.role-1": "Product Manager",
+  "about.team.role-2": "Frontend Engineer",
+  "about.team.role-3": "Backend Engineer",
+  "about.team.role-4": "UX Designer",
 
   /* ===== Testimonials ===== */
   "testimonials.badge": "Отзывы",
@@ -332,6 +344,18 @@ export const ru: Record<TranslationKey, string> = {
   "testimonials.title.highlight": "лидеры индустрии",
   "testimonials.description":
     "Узнайте, что говорят бренды и команды, с которыми мы имели честь работать.",
+  "testimonials.1.quote":
+    "Отличная работа! Заказывал разработку сайта для своей службы доставки. Всё сделано четко, адаптив под мобильные телефоны идеальный, а админка получилась очень простой и понятной — разобрался за полчаса. Отдельный плюс за скорость загрузки, для наших клиентов это было критично. Рекомендую как надежного специалиста!",
+  "testimonials.1.author": "Арман Ахметов",
+  "testimonials.1.role": "Предприниматель, г. Астана",
+  "testimonials.2.quote":
+    "Рада, что доверила разработку именно этому специалисту. Нам нужно было запустить современный сайт-агрегатор для детских образовательных центров. Проект получился легким, стильным, с удобными фильтрами и — что самое главное для Казахстана — грамотным переключением между казахским и русским языками. Спасибо за крутой результат!",
+  "testimonials.2.author": "Шынар Аскарова",
+  "testimonials.2.role": "Основатель социального проекта",
+  "testimonials.3.quote":
+    "Сотрудничеством максимально доволен. Разработчик отлично понимает современные технологии, делает ставку на скорость веб-приложения и чистый код. Запустили личный кабинет для клиентов всего за пару недель. Всё просто летает, а интеграция с локальными платежными шлюзами (включая Kaspi) работает без сбоев. Будем работать дальше.",
+  "testimonials.3.author": "Данияр Нуртазин",
+  "testimonials.3.role": "Co-founder IT-стартапа, г. Алматы",
 
   /* ===== Contact ===== */
   "contact.cta.title.prefix": "Давайте создадим",

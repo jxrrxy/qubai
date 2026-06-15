@@ -30,10 +30,10 @@ const valueKeys = [
 ];
 
 const team = [
-  { initials: "AK", name: "Akira Kuroda", roleKey: "about.team.role-1" as const, color: "from-qubai-500 to-purple-600" },
-  { initials: "SM", name: "Sasha Moreno", roleKey: "about.team.role-2" as const, color: "from-purple-500 to-pink-600" },
-  { initials: "JL", name: "Jamie Liu", roleKey: "about.team.role-3" as const, color: "from-pink-500 to-orange-600" },
-  { initials: "RT", name: "Ryan Torres", roleKey: "about.team.role-4" as const, color: "from-orange-500 to-cyan-600" },
+  { initials: "MK", name: "Мирас Кубаев", roleKey: "about.team.role-1" as const, color: "from-qubai-500 to-purple-600" },
+  { initials: "SA", name: "Саид Ахилбеков", roleKey: "about.team.role-2" as const, color: "from-purple-500 to-pink-600" },
+  { initials: "MM", name: "Манас Медет", roleKey: "about.team.role-3" as const, color: "from-pink-500 to-orange-600" },
+  { initials: "SM", name: "Сулейменов Мырзакелді", roleKey: "about.team.role-4" as const, color: "from-orange-500 to-cyan-600" },
 ];
 
 function AnimatedNumber({
