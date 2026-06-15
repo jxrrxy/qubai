@@ -64,7 +64,7 @@ export function Header() {
         <a href="#" className="relative z-10 flex items-center gap-4 py-3 md:py-0">
           <motion.div layout transition={{ duration: 0.4 }}>
             <Image
-              src="/qubai.jpg"
+              src="/qubai2.png"
               alt="Qubai"
               width={scrolled ? 44 : 52}
               height={scrolled ? 44 : 52}

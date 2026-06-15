@@ -41,7 +41,7 @@ export function Contact() {
               {t("contact.cta.description")}
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button variant="primary" size="lg" href="mailto:qubai.dev@outlook.com">
+              <Button variant="primary" size="lg" href="https://wa.me/77023707723" target="_blank" rel="noopener noreferrer">
                 {t("contact.cta.button")}
                 <ArrowRightIcon />
               </Button>

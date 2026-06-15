@@ -9,6 +9,8 @@ export interface ButtonProps
   variant?: "primary" | "secondary" | "ghost" | "outline";
   size?: "sm" | "md" | "lg";
   href?: string;
+  target?: string;
+  rel?: string;
   icon?: React.ReactNode;
 }
 
@@ -17,6 +19,8 @@ export function Button({
   variant = "primary",
   size = "md",
   href,
+  target,
+  rel,
   icon,
   children,
   ...props
@@ -55,6 +59,8 @@ export function Button({
     return (
       <motion.a
         href={href}
+        target={target}
+        rel={rel}
         className={cn(
           base,
           sizes[size],

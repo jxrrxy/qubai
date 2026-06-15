@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/qubai.jpg",
+    icon: "/qubai2.png",
   },
 };
 
