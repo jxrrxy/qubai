@@ -53,13 +53,32 @@ function ProjectCard({
             )}
           >
             {project.image ? (
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+              <div className="relative w-full max-w-lg">
+                {/* Browser mockup */}
+                <div className="mx-auto w-full rounded-xl border border-white/10 bg-black/60 backdrop-blur-sm shadow-2xl">
+                  {/* Browser bar */}
+                  <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
+                    <div className="flex gap-1.5">
+                      <div className="h-2.5 w-2.5 rounded-full bg-red-500/50" />
+                      <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/50" />
+                      <div className="h-2.5 w-2.5 rounded-full bg-green-500/50" />
+                    </div>
+                    <div className="ml-3 h-5 flex-1 rounded-md bg-white/5 px-3 text-xs leading-5 text-zinc-500">
+                      balaqai.vercel.app
+                    </div>
+                  </div>
+                  {/* Screenshot */}
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
+                </div>
+              </div>
             ) : (
               <div className="relative">
                 {/* Browser mockup */}
