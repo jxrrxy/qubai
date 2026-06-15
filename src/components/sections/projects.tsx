@@ -21,6 +21,7 @@ const projects = [
     gradient: "from-blue-600/20 via-purple-600/10 to-transparent",
     image: "/balaqai.png",
     color: "from-blue-500 to-purple-600",
+	    link: "https://balaqai.vercel.app/",
     metrics: ["Детские центры по всему Казахстану", "Двуязычный интерфейс", "Современный адаптивный дизайн"],
   },
 ];
@@ -152,7 +153,7 @@ function ProjectCard({
             </div>
 
             <div className="mt-6">
-              <Button variant="ghost" size="sm" className="group">
+              <Button variant="ghost" size="sm" className="group" href={project.link}>
                 {t("projects.case-study")}
                 <ArrowRightIcon />
               </Button>
