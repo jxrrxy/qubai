@@ -1,0 +1,8 @@
+motion() is deprecated. Use motion.create() instead.
+[browser] Image with src "/qubai2.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[browser] motion() is deprecated. Use motion.create() instead. (src/components/ui/glass-card.tsx:21:33)
+[browser] Image with src "/balaqai.png" has "fill" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height.
+[browser] Image with src "/САЛТАНАТ.png" has "fill" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height.
+[browser] Image with src "/KUBAEV.png" has "fill" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height.
+motion() is deprecated. Use motion.create() instead.

@@ -21,8 +21,35 @@ const projects = [
     gradient: "from-blue-600/20 via-purple-600/10 to-transparent",
     image: "/balaqai.png",
     color: "from-blue-500 to-purple-600",
-	    link: "https://balaqai.vercel.app/",
+    displayUrl: "balaqai.vercel.app",
+    link: "https://balaqai.vercel.app/",
     metrics: ["Детские центры по всему Казахстану", "Двуязычный интерфейс", "Современный адаптивный дизайн"],
+  },
+  {
+    title: "Салтанат-Риелтор",
+    subtitle: "Сайт для агентства недвижимости",
+    description:
+      "Современная презентационная площадка для риелтора с акцентом на доверие, понятную подачу услуг и удобный первый контакт с клиентом.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Responsive UI"],
+    gradient: "from-emerald-600/20 via-cyan-600/10 to-transparent",
+    image: "/САЛТАНАТ.png",
+    color: "from-emerald-500 to-cyan-600",
+    displayUrl: "saltanat-rieltor.kz",
+    link: "#contact",
+    metrics: ["Каталог и услуги", "Адаптивный интерфейс", "Быстрая заявка"],
+  },
+  {
+    title: "KUBAEV LEGAL",
+    subtitle: "Сайт юридической компании",
+    description:
+      "Строгий и понятный сайт для юридической практики: структура услуг, деловой визуальный стиль и быстрый путь к консультации.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Legal Website"],
+    gradient: "from-zinc-600/20 via-qubai-600/10 to-transparent",
+    image: "/KUBAEV.png",
+    color: "from-zinc-500 to-qubai-600",
+    displayUrl: "kubaev.legal",
+    link: "#contact",
+    metrics: ["Юридические услуги", "Деловой дизайн", "Форма обращения"],
   },
 ];
 
@@ -64,16 +91,16 @@ function ProjectCard({
                       <div className="h-2.5 w-2.5 rounded-full bg-green-500/50" />
                     </div>
                     <div className="ml-3 h-5 flex-1 rounded-md bg-white/5 px-3 text-xs leading-5 text-zinc-500">
-                      balaqai.vercel.app
+                      {project.displayUrl}
                     </div>
                   </div>
                   {/* Screenshot */}
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className="relative aspect-[16/9] overflow-hidden bg-white">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-cover object-top"
+                      className="object-contain object-top"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>

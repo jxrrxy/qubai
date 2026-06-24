@@ -1,0 +1,15 @@
+
+> qubai@0.1.0 dev
+> next dev --port 3000
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.8.9:3000
+✓ Ready in 1019ms
+Creating turbopack project { dir: 'C:\\Users\\sepie\\qubai', testMode: true }
+
+ GET / 200 in 437ms (next.js: 174ms, application-code: 263ms)
+ GET / 200 in 98ms (next.js: 8ms, application-code: 91ms)
+✓ Compiled in 119ms
+ GET / 200 in 94ms (next.js: 53ms, application-code: 41ms)
+ GET / 200 in 164ms (next.js: 5ms, application-code: 159ms)
